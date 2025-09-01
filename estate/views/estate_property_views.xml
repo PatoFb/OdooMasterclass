@@ -13,9 +13,11 @@
             <form string="Test">
                 <sheet>
                     <group>
+                    <h1 name="name"></h1>
+                    <field name="tag_ids" widget="many2many_tags"/>
                         <group>
                             <field name="property_type_id"/>
-                            <field name="name"/>
+                            <field name="date_availability"/>
                             <field name="postcode"/>
                         </group>
                         <group>
