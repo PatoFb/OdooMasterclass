@@ -14,7 +14,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="property_type_id.name" />
+                            <field name="property_type_id"/>
                             <field name="name"/>
                             <field name="postcode"/>
                         </group>
