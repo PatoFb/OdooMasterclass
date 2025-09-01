@@ -12,9 +12,9 @@
         <field name="arch" type="xml">
             <form string="Test">
                 <sheet>
-                    <group>
-                    <h1 name="name"></h1>
+                    <h1 name="name"/>
                     <field name="tag_ids" widget="many2many_tags"/>
+                    <group>
                         <group>
                             <field name="property_type_id"/>
                             <field name="date_availability"/>
