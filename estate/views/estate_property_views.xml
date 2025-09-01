@@ -12,7 +12,7 @@
         <field name="arch" type="xml">
             <form string="Estate Property">
                 <sheet>
-                    <field name="name"/>
+                    <h1><field name="name"/></h1>
                     <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
@@ -37,6 +37,9 @@
                                 <field string="Garden Area (sqm)" name="garden_area"/>
                                 <field name="garden_orientation"/>
                             </group>
+                        </page>
+                        <page string="Offers">
+                            <field name="offer_ids"/>
                         </page>
                         <page string="Other Info">
                             <group>

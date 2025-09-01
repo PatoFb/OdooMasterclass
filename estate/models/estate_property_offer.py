@@ -1,7 +1,15 @@
 from odoo import fields, models
 
-class EstatePropertyTag(models.Model):
-    _name = "estate.property.tag"
-    _description = "Property Tag"
+class EstatePropertyOffer(models.Model):
+    _name = "estate.property.offer"
+    _description = "Property Offer"
 
-    name = fields.Char('Tag Name', required=True, translate=True)
+    price = fields.Float()
+    status = fields.Selection(
+        selection=[
+            ('accepted', 'Accepted'),
+            ('refused', 'Refused')
+        ], copy=False
+    )
+    partner_id = fields.Many2one('res.partner', string="Buyer", required=True)
+    property_id = fields.Many2one('estate.property', string="Property", required=True)
