@@ -18,25 +18,4 @@
             </search>
         </field>
     </record>
-
-    <record id="estate_property_view_form" model="ir.ui.view">
-        <field name="name">estate.property.form</field>
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <form string="Estate Properties">
-                <sheet>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <record id="estate_property_view_list" model="ir.ui.view">
-        <field name="name">estate.property.list</field>
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <list string="Channel" editable="bottom">
-                <field name="name"/>
-            </list>
-        </field>
-    </record>
 </odoo>
