@@ -5,5 +5,9 @@
     'license': 'OPL-1',
     'author': 'Pato Fb',
     'description': 'Test module for Odoo Masterclass',
-    'category': 'Training'
+    'category': 'Training',
+    'data': [
+        'data/estate_property.csv',
+        'security/ir.mode.access.csv'
+    ]
 }
