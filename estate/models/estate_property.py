@@ -5,11 +5,10 @@ class EstateProperty(models.Model):
     _description = "Property Description"
 
     name = fields.Char('Property Name', required=True, translate=True)
-    description = fields.Text('Property Description', required=True, translate=True)
-    price = fields.Float('Price $', required=True)
+    description = fields.Text('Property Description', required=True, translate=True, default="Default Description")
     postcode = fields.Char()
     date_availability = fields.Date(copy=False)
-    expected_price = fields.Float('Expected price $', required=True)
+    expected_price = fields.Float('Expected price $')
     selling_price = fields.Float('Selling price $', readonly=True, copy=False)
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer()
@@ -26,13 +25,6 @@ class EstateProperty(models.Model):
         ]
     )
     active = fields.Boolean('Active', default=True)
-    address = fields.Text('Property Address', required=True)
-    type = fields.Selection(
-        selection=[
-         ("apartment", "Property is an apartment"),
-         ("house", "Property is a house"),
-      ],
-    )
     state = fields.Selection(
         selection=[
             ('new', 'New'),
