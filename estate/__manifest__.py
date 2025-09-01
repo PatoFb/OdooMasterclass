@@ -4,5 +4,6 @@
     'depends': ['base'],
     'license': 'OPL-1',
     'author': 'PatoFb',
-    'description': 'Test module for Odoo Masterclass'
+    'description': 'Test module for Odoo Masterclass',
+    'category': 'Training'
 }
