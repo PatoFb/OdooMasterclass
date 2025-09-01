@@ -8,6 +8,6 @@
     'category': 'Training',
     'data': [
         'data/estate_property.csv',
-        'security/ir.mode.access.csv'
+        'security/ir.model.access.csv'
     ]
 }
