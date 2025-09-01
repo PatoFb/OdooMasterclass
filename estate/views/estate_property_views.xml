@@ -27,7 +27,7 @@
                             <group>
                                 <field name="description"/>
                                 <field name="bedrooms"/>
-                                <field string="Living Area (sqm)" name="living_area" string="Living Area (sqm)"/>
+                                <field string="Living Area (sqm)" name="living_area"/>
                                 <field name="facades"/>
                                 <field name="garage"/>
                                 <field name="garden"/>
