@@ -7,7 +7,6 @@
     'description': 'Test module for Odoo Masterclass',
     'category': 'Training',
     'data': [
-        'data/estate_property.csv',
         'security/ir.model.access.csv'
     ]
 }
