@@ -91,8 +91,8 @@ class EstateProperty(models.Model):
     def _check_selling_price(self):
         for estate in self:
             selling_price = max(estate.offer_ids.mapped('price'))
-            if selling_price and estate.selling_price < (estate.expected_price * 0.9):
-                raise exceptions.ValidationError("The end date cannot be set in the past")
+            if selling_price > 0 and estate.selling_price < (estate.expected_price * 0.9):
+                raise exceptions.ValidationError("The offer can't be less than 90 percent of the property value")
             
     @api.ondelete(at_uninstall=False)
     def _unlink_except_active_properties(self):
