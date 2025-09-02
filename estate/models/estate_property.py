@@ -44,6 +44,13 @@ class EstateProperty(models.Model):
     total_area = fields.Float(compute="_compute_total_area")
     best_price = fields.Float(compute="_compute_best_price")
 
+    _sql_constraints = [
+        ('expected_price_check', 'CHECK(expected_price > 0)',
+         'The expected price should be more than 0'),
+        ('selling_price_check', 'CHECK(selling_price >= 0)',
+         'The selling price should be positive'),
+    ]
+
     @api.depends("total_area")
     def _compute_total_area(self):
         for estate in self:
@@ -78,3 +85,9 @@ class EstateProperty(models.Model):
             raise exceptions.UserError("Cannot set a sold property as cancelled")
         else:
             self.state = "cancelled"
+
+    @api.constrains('selling_price', 'expected_price')
+    def _check_selling_price(self):
+        for estate in self:
+            if estate.selling_price > 0 and estate.selling_price < estate.expected_price * 0.9:
+                raise exceptions.ValidationError("The end date cannot be set in the past")
