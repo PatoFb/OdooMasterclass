@@ -68,13 +68,13 @@ class EstateProperty(models.Model):
                 estate.garden_orientation = ""
 
     def set_sold(self):
-        if self.state is "cancelled":
-            exceptions.UserError("Cannot set a cancelled property as sold")
+        if self.state == "cancelled":
+            raise exceptions.UserError("Cannot set a cancelled property as sold")
         else:
             self.state = "sold"
 
     def set_cancelled(self):
-        if self.state is "sold":
-            exceptions.UserError("Cannot set a sold property as cancelled")
+        if self.state == "sold":
+            raise exceptions.UserError("Cannot set a sold property as cancelled")
         else:
             self.state = "cancelled"
