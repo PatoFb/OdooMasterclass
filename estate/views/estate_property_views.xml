@@ -40,8 +40,8 @@
                                 <field name="facades"/>
                                 <field name="garage"/>
                                 <field name="garden"/>
-                                <field string="Garden Area (sqm)" name="garden_area" attrs="{'invisible': [('garden', '==', 'False')]}"/>
-                                <field name="garden_orientation" attrs="{'invisible': [('garden', '==', 'False')]}"//>
+                                <field string="Garden Area (sqm)" name="garden_area" attrs="{'invisible': [('garden', '==', False)]}"/>
+                                <field name="garden_orientation" attrs="{'invisible': [('garden', '==', False)]}"//>
                                 <field name="total_area" string="Total Area (sqm)"/>
                             </group>
                         </page>
