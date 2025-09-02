@@ -20,7 +20,7 @@
                     <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
-                            <field string="Status" name="state"/>
+                            <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
                             <field name="property_type_id"/>
                             <field name="date_availability"/>
                             <field name="postcode"/>
