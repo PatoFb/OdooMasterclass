@@ -12,16 +12,16 @@
         <field name="arch" type="xml">
             <form string="Estate Property">
                 <header>
-                    <button name="set_sold" type="object" string="Sold"/>
-                    <button name="set_cancelled" type="object" string="Cancel"/>
+                    <button name="set_sold" type="object" string="Sold" invisible="state==cancelled"/>
+                    <button name="set_cancelled" type="object" string="Cancel" invisible="state==sold"/>
                     <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
                 </header>
                 <sheet>
                     <h1><field name="name"/></h1>
-                    <field name="tag_ids" widget="many2many_tags"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <group>
                         <group>
-                            <field name="property_type_id"/>
+                            <field name="property_type_id" options="{'no_create': true}"/>
                             <field name="date_availability"/>
                             <field name="postcode"/>
                         </group>
@@ -40,8 +40,8 @@
                                 <field name="facades"/>
                                 <field name="garage"/>
                                 <field name="garden"/>
-                                <field string="Garden Area (sqm)" name="garden_area"/>
-                                <field name="garden_orientation"/>
+                                <field string="Garden Area (sqm)" name="garden_area" invisible="not garden"/>
+                                <field name="garden_orientation" invisible="not garden"/>
                                 <field name="total_area" string="Total Area (sqm)"/>
                             </group>
                         </page>
