@@ -32,7 +32,7 @@ class EstatePropertyOffer(models.Model):
             offer.validity = (offer.date_deadline - base_date).days
 
     def accept_offer(self):
-        if self.property_id.state is "offer_accepted":
+        if self.property_id.state == "offer_accepted":
             exceptions.UserError("Cannot accept more than one offer")
         else:
             self.status = "accepted"
