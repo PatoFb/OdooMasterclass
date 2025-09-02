@@ -87,10 +87,11 @@ class EstateProperty(models.Model):
         else:
             self.state = "cancelled"
 
-    @api.constrains('selling_price', 'expected_price')
+    @api.constrains('selling_price', 'expected_price', 'offer_ids.price')
     def _check_selling_price(self):
         for estate in self:
-            if estate.selling_price > 0 and estate.selling_price < (estate.expected_price * 0.9):
+            selling_price = max(estate.offer_ids.mapped('price'))
+            if selling_price and estate.selling_price < (estate.expected_price * 0.9):
                 raise exceptions.ValidationError("The end date cannot be set in the past")
             
     @api.ondelete(at_uninstall=False)
