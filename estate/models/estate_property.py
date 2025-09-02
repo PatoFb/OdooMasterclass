@@ -92,3 +92,8 @@ class EstateProperty(models.Model):
         for estate in self:
             if estate.selling_price > 0 and estate.selling_price < estate.expected_price * 0.9:
                 raise exceptions.ValidationError("The end date cannot be set in the past")
+            
+    @api.ondelete(at_uninstall=False)
+    def _unlink_except_active_properties(self):
+        if any(estate.state not in ('new', 'cancelled') for estate in self):
+            raise exceptions.UserError("Can't delete a house that's been sold or with an Offer")
