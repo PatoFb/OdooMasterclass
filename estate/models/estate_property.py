@@ -90,7 +90,7 @@ class EstateProperty(models.Model):
     @api.constrains('selling_price', 'expected_price')
     def _check_selling_price(self):
         for estate in self:
-            if estate.selling_price > 0 and estate.selling_price < estate.expected_price * 0.9:
+            if estate.selling_price > 0 and estate.selling_price < (estate.expected_price * 0.9):
                 raise exceptions.ValidationError("The end date cannot be set in the past")
             
     @api.ondelete(at_uninstall=False)
