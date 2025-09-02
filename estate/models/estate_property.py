@@ -87,11 +87,12 @@ class EstateProperty(models.Model):
         else:
             self.state = "cancelled"
 
-    @api.constrains('best_price', 'expected_price')
+    @api.constrains('offer_ids.price', 'expected_price')
     def _check_selling_price(self):
         for estate in self:
-            if estate.best_price > (estate.expected_price * 0.9):
-                raise exceptions.ValidationError("The offer can't be less than 90 percent of the property value")
+            best_price = max(estate.offer_ids.mapped("price"))
+            if best_price > (estate.expected_price * 0.9):
+                raise exceptions.ValidationError("The offer can't be less than 90 percent of the property value", best_price, estate.best_price)
             
     @api.ondelete(at_uninstall=False)
     def _unlink_except_active_properties(self):
