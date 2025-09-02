@@ -50,7 +50,7 @@ class EstateProperty(models.Model):
             estate.total_area = estate.living_area + estate.garden_area
 
     @api.depends("best_price")
-    def _compute_total_area(self):
+    def _compute_best_price(self):
         for estate in self:
             if estate.offer_ids:
                 estate.best_price = max(estate.offer_ids.mapped("price"))
