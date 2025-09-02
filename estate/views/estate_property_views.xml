@@ -64,7 +64,10 @@
         <field name="name">estate.property.list</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <list string="Properties" create="True" editable="bottom">
+            <list string="Properties" create="True" editable="bottom" 
+                        decoration-success="state=='offer_received' or state=='offer_accepted'" 
+                        decoration-bf="state=='offer_accepted'"
+                        decoration-muted="state=='sold'">
                 <field string="Title" name="name"/>
                 <field string="Postcode" name="postcode"/>
                 <field string="Bedrooms" name="bedrooms"/>
@@ -72,6 +75,7 @@
                 <field string="Expected Price" name="expected_price"/>
                 <field string="Selling Price" name="selling_price"/>
                 <field string="Available From" name="date_availability" optional="hide"/>
+                <field name="state" optional="hide"/>
             </list>
         </field>
     </record>
