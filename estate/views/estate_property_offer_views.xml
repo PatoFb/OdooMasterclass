@@ -7,6 +7,8 @@
             <list string="Properties" create="True">
                 <field string="Price" name="price"/>
                 <field string="Partner" name="partner_id"/>
+                <field string="Validity (days)" name="validity"/>
+                <field string="Deadline" name="date_deadline"/>
                 <field string="Status" name="status"/>
             </list>
         </field>

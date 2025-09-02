@@ -21,11 +21,13 @@ class EstatePropertyOffer(models.Model):
     @api.depends("date_deadline")
     def _compute_date_deadline(self):
         for offer in self:
-            base_date = offer.create_date or fields.Date.today()
+            base = offer.create_date or fields.Datetime.now()
+            base_date = fields.Date.to_date(base)
             offer.date_deadline = base_date + relativedelta(days=offer.validity)
 
     @api.depends("date_deadline")
     def _inverse_date_deadline(self):
         for offer in self:
-            base_date = offer.create_date or fields.Date.today()
+            base = offer.create_date or fields.Datetime.now()
+            base_date = fields.Date.to_date(base)
             offer.validity = (offer.date_deadline - base_date).days
