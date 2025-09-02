@@ -33,7 +33,7 @@ class EstatePropertyOffer(models.Model):
 
     def accept_offer(self):
         if self.property_id.state == "offer_accepted":
-            exceptions.UserError("Cannot accept more than one offer")
+            raise exceptions.UserError("Cannot accept more than one offer")
         else:
             self.status = "accepted"
             self.property_id.partner_id = self.partner_id
