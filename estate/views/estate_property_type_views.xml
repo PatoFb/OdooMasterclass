@@ -22,6 +22,7 @@
                                     <field name="state" string="Status"/>
                                 </line>
                             </field>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
