@@ -87,7 +87,7 @@ class EstateProperty(models.Model):
         else:
             self.state = "cancelled"
 
-    @api.constrains('offer_ids.price', 'expected_price')
+    @api.constrains('offer_ids', 'expected_price')
     def _check_selling_price(self):
         for estate in self:
             best_price = max(estate.offer_ids.mapped("price"))
