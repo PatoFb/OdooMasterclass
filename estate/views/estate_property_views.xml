@@ -77,7 +77,7 @@
                 <field string="Expected Price" name="expected_price"/>
                 <field string="Selling Price" name="selling_price"/>
                 <field string="Available From" name="date_availability" optional="hide"/>
-                <field name="state" invisible="1"/>
+                <field name="state" invisible="1" optional="hide"/>
             </list>
         </field>
     </record>
