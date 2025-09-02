@@ -12,8 +12,8 @@
         <field name="arch" type="xml">
             <form string="Estate Property">
                 <header>
-                    <button name="set_sold" type="object" string="Sold" invisible="state==cancelled"/>
-                    <button name="set_cancelled" type="object" string="Cancel" invisible="state==sold"/>
+                    <button name="set_sold" type="object" string="Sold" attrs="{'invisible': [('state', '==', 'cancelled')]}"/>
+                    <button name="set_cancelled" type="object" string="Cancel" attrs="{'invisible': [('state', '==', 'sold')]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
                 </header>
                 <sheet>
@@ -40,8 +40,8 @@
                                 <field name="facades"/>
                                 <field name="garage"/>
                                 <field name="garden"/>
-                                <field string="Garden Area (sqm)" name="garden_area" invisible="not garden"/>
-                                <field name="garden_orientation" invisible="not garden"/>
+                                <field string="Garden Area (sqm)" name="garden_area" attrs="{'invisible': [('garden', '==', 'False')]}"/>
+                                <field name="garden_orientation" attrs="{'invisible': [('garden', '==', 'False')]}"//>
                                 <field name="total_area" string="Total Area (sqm)"/>
                             </group>
                         </page>
