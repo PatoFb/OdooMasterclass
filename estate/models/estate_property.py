@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, exceptions
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
@@ -61,8 +61,20 @@ class EstateProperty(models.Model):
     def _onchange_garden(self):
         for estate in self:
             if estate.garden is True:
-                self.garden_area = 10
-                self.garden_orientation = "north"
+                estate.garden_area = 10
+                estate.garden_orientation = "north"
             else:
-                self.garden_area = 0
-                self.garden_orientation = ""
+                estate.garden_area = 0
+                estate.garden_orientation = ""
+
+    def set_sold(self):
+        if self.state is "cancelled":
+            exceptions.UserError("Cannot set a cancelled property as sold")
+        else:
+            self.state = "sold"
+
+    def set_cancelled(self):
+        if self.state is "sold":
+            exceptions.UserError("Cannot set a sold property as cancelled")
+        else:
+            self.state = "cancelled"

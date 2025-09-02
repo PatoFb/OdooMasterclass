@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, exceptions
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 
@@ -31,3 +31,15 @@ class EstatePropertyOffer(models.Model):
             base = offer.create_date or fields.Datetime.now()
             base_date = fields.Date.to_date(base)
             offer.validity = (offer.date_deadline - base_date).days
+
+    def accept_offer(self):
+        if self.property_id.state is "offer_accepted":
+            exceptions.UserError("Cannot accept more than one offer")
+        else:
+            self.status = "accepted"
+            self.property_id.partner_id = self.partner_id
+            self.property_id.selling_price = self.price
+            self.property_id.state = "offer_accepted"
+
+    def refuse_offer(self):
+        self.status = "refused"
