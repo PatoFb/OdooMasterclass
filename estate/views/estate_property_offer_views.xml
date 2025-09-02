@@ -9,8 +9,8 @@
                 <field string="Partner" name="partner_id"/>
                 <field string="Validity (days)" name="validity"/>
                 <field string="Deadline" name="date_deadline"/>
-                <button name="accept_offer" type="object" icon="fa-check" attrs="{'invisible': [('status', '!=', False)]}"/>
-                <button name="refuse_offer" type="object" icon="fa-times" attrs="{'invisible': [('status', '!=', False)]}"/>
+                <button name="accept_offer" type="object" icon="fa-check" invisible="status != False"/>
+                <button name="refuse_offer" type="object" icon="fa-times" invisible="status != False"/>
                 <field string="Status" name="status"/>
             </list>
         </field>
