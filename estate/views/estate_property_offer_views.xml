@@ -4,7 +4,7 @@
         <field name="name">estate.property.offer.list</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <list string="Properties" create="True">
+            <list string="Properties" create="True" editable="true">
                 <field string="Price" name="price"/>
                 <field string="Partner" name="partner_id"/>
                 <field string="Validity (days)" name="validity"/>

@@ -64,14 +64,14 @@
         <field name="name">estate.property.list</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <list string="Properties" create="True">
+            <list string="Properties" create="True" editable="true">
                 <field string="Title" name="name"/>
                 <field string="Postcode" name="postcode"/>
                 <field string="Bedrooms" name="bedrooms"/>
                 <field string="Living area (sqm)" name="living_area"/>
                 <field string="Expected Price" name="expected_price"/>
                 <field string="Selling Price" name="selling_price"/>
-                <field string="Available From" name="date_availability"/>
+                <field string="Available From" name="date_availability" optional="true" hidden="true"/>
             </list>
         </field>
     </record>
