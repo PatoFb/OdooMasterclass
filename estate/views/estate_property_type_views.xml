@@ -19,7 +19,7 @@
                                 <line>
                                     <field name="name" string="Title"/>
                                     <field name="expected_price"/>
-                                    <field name="state" name="Status"/>
+                                    <field name="state" string="Status"/>
                                 </line>
                             </field>
                     </notebook>
