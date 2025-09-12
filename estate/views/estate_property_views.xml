@@ -68,6 +68,11 @@
                         decoration-success="state=='offer_received' or state=='offer_accepted'" 
                         decoration-bf="state=='offer_accepted'"
                         decoration-muted="state=='sold'">
+                <button name="action_open_form"
+                    type="object"
+                    string="Abrir"
+                    class="btn-link"
+                    icon="fa-external-link"/>
                 <field string="Title" name="name"/>
                 <field name="property_type_id" string="Type"/>
                 <field string="Postcode" name="postcode"/>

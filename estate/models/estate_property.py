@@ -97,3 +97,16 @@ class EstateProperty(models.Model):
     def _unlink_except_active_properties(self):
         if any(estate.state not in ('new', 'cancelled') for estate in self):
             raise exceptions.UserError("Can't delete a house that's been sold or with an Offer")
+        
+    def action_open_form(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Estate Property',
+            'res_model': 'estate.property',
+            'view_mode': 'form',
+            'res_id': self.id,
+            # usa tu external id real de la vista form
+            'view_id': self.env.ref('estate.estate_property_view_form').id,
+            'target': 'current',
+        }
