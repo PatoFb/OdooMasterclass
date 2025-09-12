@@ -109,7 +109,6 @@ class EstateProperty(models.Model):
             'res_model': 'estate.property',
             'view_mode': 'form',
             'res_id': self.id,
-            # usa tu external id real de la vista form
-            'view_id': self.env.ref('estate.estate_property_view_form').id,
+            'view_id': self.env.ref('estate_property_view_form').id,
             'target': 'current',
         }
