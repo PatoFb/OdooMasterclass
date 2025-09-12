@@ -74,7 +74,7 @@
                     string=""
                     class="oe_inline btn-link"
                     icon="fa-external-link"
-                    attrs="{'invisible': [('id', '=', False)]}"/>
+                    invisible="id == False"/>
             <field name="property_type_id" string="Type"/>
             <field string="Postcode" name="postcode"/>
             <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
