@@ -61,31 +61,32 @@
     </record>
 
     <record id="estate_property_view_list" model="ir.ui.view">
-        <field name="name">estate.property.list</field>
-        <field name="model">estate.property</field>
-        <field name="arch" type="xml">
-            <list string="Properties" create="True" editable="bottom" 
-                        decoration-success="state=='offer_received' or state=='offer_accepted'" 
-                        decoration-bf="state=='offer_accepted'"
-                        decoration-muted="state=='sold'">
-                <button name="action_open_form"
+    <field name="name">estate.property.list</field>
+    <field name="model">estate.property</field>
+    <field name="arch" type="xml">
+        <list string="Properties" create="True" editable="bottom"
+              decoration-success="state=='offer_received' or state=='offer_accepted'"
+              decoration-bf="state=='offer_accepted'"
+              decoration-muted="state=='sold'">
+            <field string="Title" name="name"/>
+            <button name="action_open_form"
                     type="object"
-                    string="Abrir"
-                    class="btn-link"
-                    icon="fa-external-link"/>
-                <field string="Title" name="name"/>
-                <field name="property_type_id" string="Type"/>
-                <field string="Postcode" name="postcode"/>
-                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                <field string="Bedrooms" name="bedrooms"/>
-                <field string="Living area (sqm)" name="living_area"/>
-                <field string="Expected Price" name="expected_price"/>
-                <field string="Selling Price" name="selling_price"/>
-                <field string="Available From" name="date_availability" optional="hide"/>
-                <field name="state" invisible="1" optional="hide"/>
-            </list>
-        </field>
-    </record>
+                    string=""
+                    class="oe_inline btn-link"
+                    icon="fa-external-link"
+                    attrs="{'invisible': [('id', '=', False)]}"/>
+            <field name="property_type_id" string="Type"/>
+            <field string="Postcode" name="postcode"/>
+            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            <field string="Bedrooms" name="bedrooms"/>
+            <field string="Living area (sqm)" name="living_area"/>
+            <field string="Expected Price" name="expected_price"/>
+            <field string="Selling Price" name="selling_price"/>
+            <field string="Available From" name="date_availability" optional="hide"/>
+            <field name="state" invisible="1" optional="hide"/>
+        </list>
+    </field>
+</record>
 
     <record id="estate_property_view_search" model="ir.ui.view">
         <field name="name">estate.property.view.search</field>

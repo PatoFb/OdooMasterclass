@@ -104,11 +104,11 @@ class EstateProperty(models.Model):
     def action_open_form(self):
         self.ensure_one()
         return {
-            'type': 'ir.actions.act_window',
-            'name': 'Estate Property',
-            'res_model': 'estate.property',
-            'view_mode': 'form',
-            'res_id': self.id,
-            'view_id': self.env.ref('estate_property_view_form').id,
-            'target': 'current',
-        }
+        'type': 'ir.actions.act_window',
+        'name': 'Estate Property',
+        'res_model': 'estate.property',
+        'view_mode': 'form',
+        'res_id': self.id,
+        'view_id': self.env.ref('estate.estate_property_view_form').id,
+        'target': 'current',
+    }
