@@ -65,15 +65,18 @@ class EstateProperty(models.Model):
             else:
                 estate.best_price = 0.0
 
-    @api.onchange("garden", 'garden_area', 'garden_orientation')
+    @api.onchange('garden')
     def _onchange_garden(self):
         for estate in self:
-            if estate.garden is True:
-                estate.garden_area = 10
-                estate.garden_orientation = "north"
+            if estate.garden:
+                if not estate._origin or not estate._origin.garden:
+                    if not estate.garden_area:
+                        estate.garden_area = 10
+                    if not estate.garden_orientation:
+                        estate.garden_orientation = 'north'
             else:
                 estate.garden_area = 0
-                estate.garden_orientation = ""
+                estate.garden_orientation = False 
 
     def set_sold(self):
         if self.state == "cancelled":
